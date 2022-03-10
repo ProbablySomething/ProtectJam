@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Manager : MonoBehaviour
 {
-    public enum LevelPhase { Sheep, Ghost }
+    public enum LevelPhase { Sheep, Ghost, LevelComplete }
 
     [SerializeField] private Transform lambSpawnPoint;
     [SerializeField] private Transform sheperdSpawnPoint;
@@ -19,11 +19,20 @@ public class Manager : MonoBehaviour
     [SerializeField] private GameObject snakeObject;
     [SerializeField] private GameObject foxObject;
 
+    [SerializeField] private List<GameObject> enemies;
+
+    [SerializeField] private CanvasGroup gameOverMenu;
+
     private GameObject lambInstance;
     private GameObject sheperdInstance;
+    private List<GameObject> enemyInstances;
 
     public LevelPhase Phase { get; private set; }
-    public Queue<(Vector2 pos, float time)> MoveHistory { protected get; set; }
+    private Queue<(Vector2 pos, float time)> _moveHistory;
+    public Queue<(Vector2 pos, float time)> MoveHistory { protected get { return _moveHistory; } set { _moveHistory = value; moveHistoryClone = new Queue<(Vector2 pos, float time)>(value); } }
+    private Queue<(Vector2 pos, float time)> moveHistoryClone;
+
+    private (Vector2 pos, float time)[] queueElements; 
 
     // Start is called before the first frame update
     void Start()
@@ -31,7 +40,6 @@ public class Manager : MonoBehaviour
         lambInstance = Instantiate(lambPlayerObject, lambSpawnPoint);
         lambInstance.GetComponent<LambController>().ManagerInstance = GetComponent<Manager>();
         Phase = LevelPhase.Sheep;
-        
     }
 
     // Update is called once per frame
@@ -40,11 +48,12 @@ public class Manager : MonoBehaviour
         
     }
 
-    public void ChangePhase()
+    private void ClearInstances()
     {
-        if(Phase == LevelPhase.Sheep)
+        if (lambInstance)
         {
             Destroy(lambInstance);
+
             Phase = LevelPhase.Ghost;
             sheperdInstance = Instantiate(sheperdObject, sheperdSpawnPoint);
             lambInstance = Instantiate(lambPassiveObject, lambSpawnPoint);
@@ -63,9 +72,67 @@ public class Manager : MonoBehaviour
                 Instantiate(foxObject, child);
             }
         }
-        else
+        if (sheperdInstance)
         {
-            //Complete Level
+            Destroy(sheperdInstance);
+        }
+        if (enemyInstances != null)
+        {
+            foreach(GameObject enemy in enemyInstances)
+            {
+                Destroy(enemy);
+            }
         }
     }
+
+    public void ToggleMenu(CanvasGroup group)
+    {
+        group.alpha = 1 - group.alpha;
+        group.interactable = !group.interactable;
+        group.blocksRaycasts = !group.blocksRaycasts;
+    }
+
+    public void GameOver()
+    {
+        ToggleMenu(gameOverMenu);
+    }
+
+    public void SetPhase(int newPhase)
+    {
+
+        switch ((LevelPhase)newPhase)
+        {
+            case 0:
+                
+                ClearInstances();
+                Phase = LevelPhase.Sheep;
+                lambInstance = Instantiate(lambPlayerObject, lambSpawnPoint);
+                lambInstance.GetComponent<LambController>().ManagerInstance = GetComponent<Manager>();
+                break;
+
+            case LevelPhase.Ghost:
+
+                ClearInstances();
+                
+                
+                if(moveHistoryClone != null)
+                {
+                    MoveHistory = moveHistoryClone;
+                }
+                
+
+                Phase = LevelPhase.Ghost;
+                sheperdInstance = Instantiate(sheperdObject, sheperdSpawnPoint);
+                lambInstance = Instantiate(lambPassiveObject, lambSpawnPoint);
+                lambInstance.GetComponent<FollowMovement>().MoveHistory = MoveHistory;
+
+                //spawn ghosts
+                break;
+
+            case LevelPhase.LevelComplete:
+
+                break;
+        }
+    }
+
 }
