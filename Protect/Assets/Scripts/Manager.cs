@@ -8,9 +8,16 @@ public class Manager : MonoBehaviour
 
     [SerializeField] private Transform lambSpawnPoint;
     [SerializeField] private Transform sheperdSpawnPoint;
+    [SerializeField] private Transform wolfSpawnPoints;
+    [SerializeField] private Transform snakeSpawnPoints;
+    [SerializeField] private Transform foxSpawnPoints;
+
     [SerializeField] private GameObject sheperdObject;
     [SerializeField] private GameObject lambPlayerObject;
     [SerializeField] private GameObject lambPassiveObject;
+    [SerializeField] private GameObject wolfObject;
+    [SerializeField] private GameObject snakeObject;
+    [SerializeField] private GameObject foxObject;
 
     [SerializeField] private CanvasGroup gameOverMenu;
 
@@ -45,6 +52,26 @@ public class Manager : MonoBehaviour
         if (lambInstance)
         {
             Destroy(lambInstance);
+<<<<<<< HEAD
+=======
+            Phase = LevelPhase.Ghost;
+            sheperdInstance = Instantiate(sheperdObject, sheperdSpawnPoint);
+            lambInstance = Instantiate(lambPassiveObject, lambSpawnPoint);
+            lambInstance.GetComponent<FollowMovement>().MoveHistory = MoveHistory;
+            //spawn ghosts
+            foreach (Transform child in wolfSpawnPoints)
+            {
+                Instantiate(wolfObject, child);
+            }
+            foreach (Transform child in snakeSpawnPoints)
+            {
+                Instantiate(snakeObject, child);
+            }
+            foreach (Transform child in foxSpawnPoints)
+            {
+                Instantiate(foxObject, child);
+            }
+>>>>>>> main
         }
         if (sheperdInstance)
         {
