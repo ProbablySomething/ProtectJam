@@ -52,8 +52,7 @@ public class Manager : MonoBehaviour
         if (lambInstance)
         {
             Destroy(lambInstance);
-<<<<<<< HEAD
-=======
+
             Phase = LevelPhase.Ghost;
             sheperdInstance = Instantiate(sheperdObject, sheperdSpawnPoint);
             lambInstance = Instantiate(lambPassiveObject, lambSpawnPoint);
@@ -71,7 +70,6 @@ public class Manager : MonoBehaviour
             {
                 Instantiate(foxObject, child);
             }
->>>>>>> main
         }
         if (sheperdInstance)
         {
