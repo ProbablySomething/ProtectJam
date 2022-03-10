@@ -19,10 +19,13 @@ public class Manager : MonoBehaviour
     [SerializeField] private GameObject snakeObject;
     [SerializeField] private GameObject foxObject;
 
+    [SerializeField] private List<GameObject> enemies;
+
     [SerializeField] private CanvasGroup gameOverMenu;
 
     private GameObject lambInstance;
     private GameObject sheperdInstance;
+    private List<GameObject> enemyInstances;
 
     public LevelPhase Phase { get; private set; }
     private Queue<(Vector2 pos, float time)> _moveHistory;
@@ -37,8 +40,6 @@ public class Manager : MonoBehaviour
         lambInstance = Instantiate(lambPlayerObject, lambSpawnPoint);
         lambInstance.GetComponent<LambController>().ManagerInstance = GetComponent<Manager>();
         Phase = LevelPhase.Sheep;
-       
-        GameOver();
     }
 
     // Update is called once per frame
@@ -75,10 +76,16 @@ public class Manager : MonoBehaviour
         {
             Destroy(sheperdInstance);
         }
-
+        if (enemyInstances != null)
+        {
+            foreach(GameObject enemy in enemyInstances)
+            {
+                Destroy(enemy);
+            }
+        }
     }
 
-    private void ToggleMenu(CanvasGroup group)
+    public void ToggleMenu(CanvasGroup group)
     {
         group.alpha = 1 - group.alpha;
         group.interactable = !group.interactable;
