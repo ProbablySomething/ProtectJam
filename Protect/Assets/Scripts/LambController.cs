@@ -16,6 +16,7 @@ public class LambController : MonoBehaviour
     private float timeBetweenMove = 0;
 
     private Queue<ValueTuple<Vector2, float>> moveHistory;
+
     private MovementController movement;
 
     // Start is called before the first frame update
@@ -51,7 +52,8 @@ public class LambController : MonoBehaviour
         {
             moveHistory.Enqueue((prevMove * speed, timeBetweenMove));
             ManagerInstance.MoveHistory = moveHistory;
-            ManagerInstance.ChangePhase();
+            
+            ManagerInstance.SetPhase((int)Manager.LevelPhase.Ghost);
         }
     }
 
