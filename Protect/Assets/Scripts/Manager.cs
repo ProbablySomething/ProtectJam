@@ -85,6 +85,7 @@ public class Manager : MonoBehaviour
         }
     }
 
+
     public void ToggleMenu(CanvasGroup group)
     {
         group.alpha = 1 - group.alpha;
@@ -134,5 +135,5 @@ public class Manager : MonoBehaviour
                 break;
         }
     }
-
+    
 }

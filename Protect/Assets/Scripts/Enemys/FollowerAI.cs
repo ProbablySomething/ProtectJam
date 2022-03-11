@@ -8,7 +8,6 @@ public class FollowerAI : MonoBehaviour, iHealth
     [SerializeField] private float aggroRange;
     [SerializeField] private float attackRange;
     [SerializeField] private float attackCooldown;
-    [SerializeField] private int health;
 
     GameObject target;
 
@@ -16,8 +15,10 @@ public class FollowerAI : MonoBehaviour, iHealth
     bool onCooldown = false;
 
     MovementController movement;
+    private int health;
 
-    public int Health {
+    public int Health
+    {
         get
         {
             return health;
@@ -25,7 +26,7 @@ public class FollowerAI : MonoBehaviour, iHealth
         set
         {
             health = value;
-            if(health <= 0)
+            if (health <= 0)
             {
                 die();
             }
@@ -35,10 +36,11 @@ public class FollowerAI : MonoBehaviour, iHealth
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<CircleCollider2D>().radius = aggroRange;
+        GetComponentInChildren<CircleCollider2D>().radius = aggroRange;
         movement = GetComponent<MovementController>();
         movement.Speed = speed;
-        Debug.Log(name + " has a speed of " + speed + ' ' + movement.Speed);
+
+        Health = 1;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -50,7 +52,7 @@ public class FollowerAI : MonoBehaviour, iHealth
             {
                 awake = true;
                 target = collision.gameObject;
-                GetComponent<CircleCollider2D>().radius = attackRange;
+                GetComponentInChildren<CircleCollider2D>().radius = attackRange;
             }
         }
         else
@@ -75,10 +77,12 @@ public class FollowerAI : MonoBehaviour, iHealth
     {
         if(!onCooldown)
         {
-            onCooldown = true;
-            //add health n stuff
-            Debug.Log(name + " Just hit you");
-            StartCoroutine(cooldown());
+            if (target.tag == "lambPassive")
+            {
+                target.GetComponent<iHealth>().Health -= 1;
+                onCooldown = true;
+                StartCoroutine(cooldown());
+            }
         }
     }
 
@@ -90,6 +94,6 @@ public class FollowerAI : MonoBehaviour, iHealth
 
     void die()
     {
-        Destroy(this);
+        Destroy(gameObject, 0);
     }
 }
