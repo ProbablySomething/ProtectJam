@@ -84,10 +84,7 @@ public class Manager : MonoBehaviour
             }
         }
     }
-<<<<<<< HEAD
-    
 
-=======
 
     public void ToggleMenu(CanvasGroup group)
     {
@@ -138,6 +135,5 @@ public class Manager : MonoBehaviour
                 break;
         }
     }
-
->>>>>>> main
+    
 }

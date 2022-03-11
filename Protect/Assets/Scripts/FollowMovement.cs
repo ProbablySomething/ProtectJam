@@ -69,6 +69,6 @@ public class FollowMovement : MonoBehaviour, iHealth
         Debug.Log("Passive Lamb Dieing");
         rb.velocity = new Vector2(0, 0);
         Destroy(this, 0);
-        FindObjectOfType<Manager>().gameOver();
+        FindObjectOfType<Manager>().GameOver();
     }
 }
