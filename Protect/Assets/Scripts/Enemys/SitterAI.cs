@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SitterAI : MonoBehaviour
+public class SitterAI : MonoBehaviour, iHealth
 {
 
     [SerializeField] private float attackRange;
@@ -11,13 +11,31 @@ public class SitterAI : MonoBehaviour
 
     Coroutine readying;
     MovementController movement;
+    private int health;
 
+    public int Health
+    {
+        get
+        {
+            return health;
+        }
+        set
+        {
+            health = value;
+            if (health <= 0)
+            {
+                die();
+            }
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<CircleCollider2D>().radius = attackRange;
+        GetComponentInChildren<CircleCollider2D>().radius = attackRange;
         movement = GetComponent<MovementController>();
         movement.Speed = lungeSpeed;
+
+        Health = 1;
     }
 
     // Update is called once per frame
@@ -46,12 +64,19 @@ public class SitterAI : MonoBehaviour
 
     void attack(GameObject target)
     {
-        Vector2 dir = target.transform.position - transform.position;
-        movement.HandleMovement(dir.normalized);
-        StartCoroutine(lungeStop(dir.magnitude));
-        Debug.Log("Hit you");
+        if (target.tag == "lambPassive")
+        {
+            Vector2 dir = target.transform.position - transform.position;
+            movement.HandleMovement(dir.normalized);
+            StartCoroutine(lungeStop(dir.magnitude));
+            target.GetComponent<iHealth>().Health = 0;
+        }
     }
 
+    void die()
+    {
+        Destroy(gameObject, 0);
+    }
 
     IEnumerator AttackDelay(GameObject target)
     {

@@ -68,4 +68,9 @@ public class Manager : MonoBehaviour
             //Complete Level
         }
     }
+    
+    public void gameOver()
+    {
+        Debug.Log("Game Over");
+    }
 }
