@@ -1,0 +1,660 @@
+fileFormatVersion: 2
+guid: 2261c989be671d8489d0ad47fb79701f
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7317764938802290611
+    second: shep and wolves_0
+  - first:
+      213: 8840627034650130614
+    second: shep and wolves_1
+  - first:
+      213: -8250004213181491229
+    second: shep and wolves_2
+  - first:
+      213: -9015481712248133262
+    second: shep and wolves_3
+  - first:
+      213: 3891054932808353533
+    second: shep and wolves_4
+  - first:
+      213: 2515251930289347307
+    second: shep and wolves_5
+  - first:
+      213: 4651144819355804058
+    second: shep and wolves_6
+  - first:
+      213: -4914729441741929572
+    second: shep and wolves_18
+  - first:
+      213: 3797304322579157510
+    second: shep and wolves_19
+  - first:
+      213: -154462262283321140
+    second: shep and wolves_24
+  - first:
+      213: 1553929872259016015
+    second: shep and wolves_25
+  - first:
+      213: -8241451399109519844
+    second: shep and wolves_26
+  - first:
+      213: 1648619172039312830
+    second: shep and wolves_29
+  - first:
+      213: 2910100995272746268
+    second: shep and wolves_39
+  - first:
+      213: 2098128687628861338
+    second: shep and wolves_40
+  - first:
+      213: 8960657019524560969
+    second: shep and wolves_41
+  - first:
+      213: -113267741758567901
+    second: shep and wolves_42
+  - first:
+      213: 63730677704299927
+    second: shep and wolves_27
+  - first:
+      213: 3697172494565247104
+    second: shep and wolves_30
+  - first:
+      213: -3663173587185483536
+    second: shep and wolves_7
+  - first:
+      213: -6693851749853005276
+    second: shep and wolves_8
+  - first:
+      213: -7401098609179159909
+    second: shep and wolves_9
+  - first:
+      213: 6336626202260286319
+    second: shep and wolves_10
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: shep and wolves_0
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 3228
+        width: 727
+        height: 650
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3bf5e1fc07ced8560800000000000000
+      internalID: 7317764938802290611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shep and wolves_1
+      rect:
+        serializedVersion: 2
+        x: 841
+        y: 3204
+        width: 728
+        height: 652
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b83908c27730ba70800000000000000
+      internalID: 8840627034650130614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shep and wolves_2
+      rect:
+        serializedVersion: 2
+        x: 2563
+        y: 3216
+        width: 370
+        height: 666
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e757d5e0e8128d80800000000000000
+      internalID: -8250004213181491229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shep and wolves_3
+      rect:
+        serializedVersion: 2
+        x: 3136
+        y: 3181
+        width: 302
+        height: 693
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2796b66162392e280800000000000000
+      internalID: -9015481712248133262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shep and wolves_4
+      rect:
+        serializedVersion: 2
+        x: 3581
+        y: 3224
+        width: 346
+        height: 618
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df6c29f78ddcff530800000000000000
+      internalID: 3891054932808353533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shep and wolves_5
+      rect:
+        serializedVersion: 2
+        x: 3898
+        y: 3841
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bea1381ed48f7e220800000000000000
+      internalID: 2515251930289347307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shep and wolves_6
+      rect:
+        serializedVersion: 2
+        x: 1614
+        y: 3214
+        width: 850
+        height: 558
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a91e994029f2c8040800000000000000
+      internalID: 4651144819355804058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shep and wolves_18
+      rect:
+        serializedVersion: 2
+        x: 3034
+        y: 2173
+        width: 285
+        height: 666
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9381d1bc9f5bcbb0800000000000000
+      internalID: -4914729441741929572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shep and wolves_19
+      rect:
+        serializedVersion: 2
+        x: 3536
+        y: 2188
+        width: 285
+        height: 666
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 602d263992cb2b430800000000000000
+      internalID: 3797304322579157510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shep and wolves_24
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 1659
+        width: 414
+        height: 658
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc0466d046d3bddf0800000000000000
+      internalID: -154462262283321140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shep and wolves_25
+      rect:
+        serializedVersion: 2
+        x: 665
+        y: 1651
+        width: 432
+        height: 637
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f45edd95cfaa09510800000000000000
+      internalID: 1553929872259016015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shep and wolves_26
+      rect:
+        serializedVersion: 2
+        x: 1122
+        y: 1651
+        width: 705
+        height: 639
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c165e6a1e9b70ad80800000000000000
+      internalID: -8241451399109519844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shep and wolves_29
+      rect:
+        serializedVersion: 2
+        x: 753
+        y: 901
+        width: 342
+        height: 627
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb54d47f66211e610800000000000000
+      internalID: 1648619172039312830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shep and wolves_39
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 153
+        width: 441
+        height: 661
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c152eb3df61c26820800000000000000
+      internalID: 2910100995272746268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shep and wolves_40
+      rect:
+        serializedVersion: 2
+        x: 698
+        y: 167
+        width: 416
+        height: 617
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9fbc2fccec0e1d10800000000000000
+      internalID: 2098128687628861338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shep and wolves_41
+      rect:
+        serializedVersion: 2
+        x: 1177
+        y: 147
+        width: 666
+        height: 639
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9483fda6516aa5c70800000000000000
+      internalID: 8960657019524560969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shep and wolves_42
+      rect:
+        serializedVersion: 2
+        x: 3322
+        y: 189
+        width: 27
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32a48f7c6979d6ef0800000000000000
+      internalID: -113267741758567901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shep and wolves_27
+      rect:
+        serializedVersion: 2
+        x: 1117
+        y: 882
+        width: 743
+        height: 634
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7951cd5b6ba62e000800000000000000
+      internalID: 63730677704299927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shep and wolves_30
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 882
+        width: 561
+        height: 697
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08808eb9bcefe4330800000000000000
+      internalID: 3697172494565247104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shep and wolves_7
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 2564
+        width: 465
+        height: 424
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f04731e70bc92dc0800000000000000
+      internalID: -3663173587185483536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shep and wolves_8
+      rect:
+        serializedVersion: 2
+        x: 719
+        y: 2453
+        width: 723
+        height: 594
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42a72ee8c49aa13a0800000000000000
+      internalID: -6693851749853005276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shep and wolves_9
+      rect:
+        serializedVersion: 2
+        x: 1478
+        y: 2641
+        width: 329
+        height: 306
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b921d3417040a4990800000000000000
+      internalID: -7401098609179159909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shep and wolves_10
+      rect:
+        serializedVersion: 2
+        x: 1866
+        y: 2494
+        width: 618
+        height: 494
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6b282445f730f750800000000000000
+      internalID: 6336626202260286319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
