@@ -54,6 +54,11 @@ public class LambController : MonoBehaviour
             ManagerInstance.MoveHistory = moveHistory;
             
             ManagerInstance.SetPhase((int)Manager.LevelPhase.Ghost);
+        }else if(collision.gameObject.tag == "Clover")
+        {
+
+            ManagerInstance.numOfClovers += 1;
+            Destroy(collision.gameObject, 0);
         }
     }
 
@@ -69,5 +74,11 @@ public class LambController : MonoBehaviour
 
         }
         prevMove = move;
+    }
+
+    public void handleMoveHistory()
+    {
+        moveHistory.Enqueue((prevMove * speed, timeBetweenMove));
+        ManagerInstance.MoveHistory = moveHistory;
     }
 }

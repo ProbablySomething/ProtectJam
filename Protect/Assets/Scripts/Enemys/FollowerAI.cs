@@ -47,7 +47,6 @@ public class FollowerAI : MonoBehaviour, iHealth
     {
         if (!awake)
         {
-            Debug.Log(collision.gameObject.name);
             if (collision.gameObject.name == "LambPassive(Clone)")
             {
                 awake = true;
@@ -57,7 +56,7 @@ public class FollowerAI : MonoBehaviour, iHealth
         }
         else
         {
-            if(collision.gameObject.name == target.name)
+            if(collision.gameObject.name == "LambPassive(Clone)")
             {
                 attack(target);
             }
@@ -69,7 +68,8 @@ public class FollowerAI : MonoBehaviour, iHealth
     {
         if(awake)
         {
-            movement.HandleMovement((target.transform.position - transform.position).normalized);
+            if(target != null)
+                movement.HandleMovement((target.transform.position - transform.position).normalized);
         }
     }
 

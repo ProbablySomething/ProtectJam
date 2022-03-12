@@ -11,6 +11,7 @@ public class Manager : MonoBehaviour
     [SerializeField] private Transform wolfSpawnPoints;
     [SerializeField] private Transform snakeSpawnPoints;
     [SerializeField] private Transform foxSpawnPoints;
+    [SerializeField] private Transform cloverSpawnPoints;
 
     [SerializeField] private GameObject sheperdObject;
     [SerializeField] private GameObject lambPlayerObject;
@@ -18,6 +19,7 @@ public class Manager : MonoBehaviour
     [SerializeField] private GameObject wolfObject;
     [SerializeField] private GameObject snakeObject;
     [SerializeField] private GameObject foxObject;
+    [SerializeField] private GameObject clover;
 
     [SerializeField] private List<GameObject> enemies;
 
@@ -32,14 +34,30 @@ public class Manager : MonoBehaviour
     public Queue<(Vector2 pos, float time)> MoveHistory { protected get { return _moveHistory; } set { _moveHistory = value; moveHistoryClone = new Queue<(Vector2 pos, float time)>(value); } }
     private Queue<(Vector2 pos, float time)> moveHistoryClone;
 
-    private (Vector2 pos, float time)[] queueElements; 
+    private (Vector2 pos, float time)[] queueElements;
+
+    [SerializeField] public int cloverGoal;
+
+    private int _numOfClovers;
+    public int numOfClovers { get { return _numOfClovers; }
+        set {
+            _numOfClovers = value;
+            if(_numOfClovers >= cloverGoal)
+            {
+                SetPhase((int)LevelPhase.Ghost);
+            }
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        lambInstance = Instantiate(lambPlayerObject, lambSpawnPoint);
-        lambInstance.GetComponent<LambController>().ManagerInstance = GetComponent<Manager>();
-        Phase = LevelPhase.Sheep;
+        //lambInstance = Instantiate(lambPlayerObject, lambSpawnPoint);
+        //lambInstance.GetComponent<LambController>().ManagerInstance = GetComponent<Manager>();
+        //Phase = LevelPhase.Sheep;
+        SetPhase((int)LevelPhase.Sheep);
+
+        numOfClovers = 0;
     }
 
     // Update is called once per frame
@@ -70,6 +88,10 @@ public class Manager : MonoBehaviour
             foreach (Transform child in foxSpawnPoints)
             {
                 Instantiate(foxObject, child);
+            }
+            foreach (Transform child in cloverSpawnPoints)
+            {
+                Instantiate(clover, child);
             }
         }
         if (sheperdInstance)
@@ -104,15 +126,22 @@ public class Manager : MonoBehaviour
         switch ((LevelPhase)newPhase)
         {
             case 0:
-                
+
                 ClearInstances();
                 Phase = LevelPhase.Sheep;
                 lambInstance = Instantiate(lambPlayerObject, lambSpawnPoint);
                 lambInstance.GetComponent<LambController>().ManagerInstance = GetComponent<Manager>();
+
+                foreach (Transform child in cloverSpawnPoints)
+                {
+                    Instantiate(clover, child);
+                }
+
                 break;
 
             case LevelPhase.Ghost:
 
+                lambInstance.GetComponent<LambController>().handleMoveHistory();
                 ClearInstances();
                 
                 
@@ -120,12 +149,13 @@ public class Manager : MonoBehaviour
                 {
                     MoveHistory = moveHistoryClone;
                 }
-                
 
-                Phase = LevelPhase.Ghost;
                 sheperdInstance = Instantiate(sheperdObject, sheperdSpawnPoint);
-                lambInstance = Instantiate(lambPassiveObject, lambSpawnPoint);
-                lambInstance.GetComponent<FollowMovement>().MoveHistory = MoveHistory;
+
+                //Phase = LevelPhase.Ghost;
+                //sheperdInstance = Instantiate(sheperdObject, sheperdSpawnPoint);
+                //lambInstance = Instantiate(lambPassiveObject, lambSpawnPoint);
+                //lambInstance.GetComponent<FollowMovement>().MoveHistory = MoveHistory;
 
                 //spawn ghosts
                 break;
