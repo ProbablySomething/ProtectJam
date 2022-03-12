@@ -64,11 +64,16 @@ public class FollowMovement : MonoBehaviour, iHealth
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "Clover")
+        {
+            Destroy(collision.gameObject, 0);
+        }
+    }
     void die()
     {
-        Debug.Log("Passive Lamb Dieing");
-        rb.velocity = new Vector2(0, 0);
-        Destroy(this, 0);
+        Destroy(gameObject, 0);
         FindObjectOfType<Manager>().GameOver();
     }
 }

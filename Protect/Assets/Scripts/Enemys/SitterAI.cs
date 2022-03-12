@@ -49,7 +49,6 @@ public class SitterAI : MonoBehaviour, iHealth
         if(collision.name == "LambPassive(Clone)")
         {
             StopCoroutine(readying);
-            Debug.Log("Stopped Coroutine");
         }
     }
 
@@ -58,7 +57,6 @@ public class SitterAI : MonoBehaviour, iHealth
         if (collision.name == "LambPassive(Clone)")
         {
             readying = StartCoroutine(AttackDelay(collision.gameObject));
-            Debug.Log("Started Coroutine");
         }
     }
 
@@ -81,7 +79,8 @@ public class SitterAI : MonoBehaviour, iHealth
     IEnumerator AttackDelay(GameObject target)
     {
         yield return new WaitForSeconds(attackDelay);
-        attack(target);
+        if(target != null)
+            attack(target);
     }
 
     IEnumerator lungeStop(float distance)
