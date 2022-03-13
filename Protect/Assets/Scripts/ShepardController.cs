@@ -12,6 +12,7 @@ public class ShepardController : MonoBehaviour
     [SerializeField] InputActionReference attackAction;
 
     MovementController movement;
+    Animator animator;
 
     Vector2 currDir;
 
@@ -29,6 +30,8 @@ public class ShepardController : MonoBehaviour
 
         attackAction.action.Enable();
         attackAction.action.performed += HandleAttack;
+
+        animator = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -53,8 +56,11 @@ public class ShepardController : MonoBehaviour
         Vector2 move = context.ReadValue<Vector2>();
         if (move != new Vector2(0, 0))
         {
+            animator.SetFloat("x", move.x);
+            animator.SetFloat("y", move.y);
             currDir = move.normalized;
         }
+        
         movement.HandleMovement(move);
     } 
 
@@ -62,10 +68,12 @@ public class ShepardController : MonoBehaviour
     {
         RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, currDir, attackRange);
         Debug.DrawRay(transform.position, currDir * attackRange, Color.black, 100);
+        animator.SetTrigger("Attack");
         foreach (RaycastHit2D hit in hits)
         {
             if (hit.collider.tag == "enemy")
             {
+                
                 hit.collider.GetComponent<iHealth>().Health -= 1;
             }
         }

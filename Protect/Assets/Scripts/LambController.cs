@@ -18,6 +18,7 @@ public class LambController : MonoBehaviour
     private Queue<ValueTuple<Vector2, float>> moveHistory;
 
     private MovementController movement;
+    private Animator animator;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +32,9 @@ public class LambController : MonoBehaviour
         moveAction.action.canceled += HandleMovement;
 
         prevPos = transform.position;
+
+        animator = GetComponentInChildren<Animator>();
+        animator.SetBool("Idle", true);
     }
 
     private void OnDisable()
@@ -71,7 +75,16 @@ public class LambController : MonoBehaviour
         {
             moveHistory.Enqueue((prevMove * speed, timeBetweenMove));
             timeBetweenMove = 0f;
-
+        }
+        if(move != new Vector2(0, 0))
+        {
+            animator.SetBool("Idle", false);
+            animator.SetFloat("x", move.x);
+            animator.SetFloat("y", move.y);
+        }
+        else
+        {
+            animator.SetBool("Idle", true);
         }
         prevMove = move;
     }

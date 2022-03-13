@@ -12,6 +12,7 @@ public class SitterAI : MonoBehaviour, iHealth
     Coroutine readying;
     MovementController movement;
     private int health;
+    private Animator animator;
 
     public int Health
     {
@@ -35,6 +36,8 @@ public class SitterAI : MonoBehaviour, iHealth
         movement = GetComponent<MovementController>();
         movement.Speed = lungeSpeed;
 
+        animator = GetComponentInChildren<Animator>();
+        animator.SetBool("InRange", false);
         Health = 1;
     }
 
@@ -46,24 +49,30 @@ public class SitterAI : MonoBehaviour, iHealth
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.name == "LambPassive(Clone)")
+        if(collision.name == "Lamb(Clone)")
         {
+            animator.SetBool("InRange", false);
             StopCoroutine(readying);
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.name == "LambPassive(Clone)")
+        if (collision.name == "Lamb(Clone)")
         {
+            Vector2 dir = (collision.transform.position - transform.position).normalized;
+            animator.SetFloat("x", dir.x);
+            animator.SetFloat("y", dir.y);
+            animator.SetBool("InRange", true);
             readying = StartCoroutine(AttackDelay(collision.gameObject));
         }
     }
 
     void attack(GameObject target)
     {
-        if (target.tag == "lambPassive")
+        if (target.name == "Lamb(Clone)")
         {
+            animator.SetTrigger("Attack");
             Vector2 dir = target.transform.position - transform.position;
             movement.HandleMovement(dir.normalized);
             StartCoroutine(lungeStop(dir.magnitude));
