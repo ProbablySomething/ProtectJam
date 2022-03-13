@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class FollowMovement : MonoBehaviour, iHealth
 {
+    public Manager ManagerReference { get; set; }
     public Queue<(Vector2 pos, float time)> MoveHistory { protected get; set; }
     private (Vector2 pos, float time) currentMove;
     private Rigidbody2D rb;
@@ -69,6 +70,7 @@ public class FollowMovement : MonoBehaviour, iHealth
                 else
                 {
                     isAtEndOfPath = true;
+                    ManagerReference.Victory();
                 }
             }
         }
@@ -88,6 +90,6 @@ public class FollowMovement : MonoBehaviour, iHealth
     void die()
     {
         Destroy(gameObject, 0);
-        FindObjectOfType<Manager>().GameOver();
+        ManagerReference.GameOver();
     }
 }
