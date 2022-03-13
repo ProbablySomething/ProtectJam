@@ -42,6 +42,7 @@ public class FollowerAI : MonoBehaviour, iHealth
         movement.Speed = speed;
 
         animator = GetComponentInChildren<Animator>();
+        animator.SetBool("AggroRange", false);
 
         Health = 1;
     }
@@ -62,7 +63,7 @@ public class FollowerAI : MonoBehaviour, iHealth
         {
             if(collision.gameObject.name == "LambPassive(Clone)")
             {
-                animator.SetBool("AttackRange", true);
+                animator.SetBool("AggroRange", true);
                 attack(target);
             }
         }
