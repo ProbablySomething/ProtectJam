@@ -6,24 +6,32 @@ public class Manager : MonoBehaviour
 {
     public enum LevelPhase { Sheep, Ghost, LevelComplete }
 
-    [SerializeField] private Transform lambSpawnPoint;
-    [SerializeField] private Transform sheperdSpawnPoint;
-    [SerializeField] private Transform wolfSpawnPoints;
-    [SerializeField] private Transform snakeSpawnPoints;
-    [SerializeField] private Transform foxSpawnPoints;
-    [SerializeField] private Transform cloverSpawnPoints;
-
     [SerializeField] private GameObject sheperdObject;
     [SerializeField] private GameObject lambPlayerObject;
     [SerializeField] private GameObject lambPassiveObject;
-    [SerializeField] private GameObject wolfObject;
+
+    [SerializeField] private GameObject wolfSpawnerObject;
+    [SerializeField] private GameObject foxSpawnerObject;
+
     [SerializeField] private GameObject snakeObject;
-    [SerializeField] private GameObject foxObject;
     [SerializeField] private GameObject clover;
 
-    [SerializeField] private List<GameObject> enemies;
+    [SerializeField] public int cloverGoal;
+
+    [SerializeField] private Transform lambSpawnPoint;
+    [SerializeField] private Transform sheperdSpawnPoint;
+
+
+    [SerializeField] private List<Transform> wolfSpawnPoints;
+    [SerializeField] private List<Transform> snakeSpawnPoints;
+    [SerializeField] private List<Transform> foxSpawnPoints;
+    [SerializeField] private List<Transform> cloverSpawnPoints;
+
+    public List<GameObject> Enemies { get; set; }
+    private List<GameObject> enemiesToDestroy;
 
     [SerializeField] private CanvasGroup gameOverMenu;
+    [SerializeField] private CanvasGroup victoryMenu;
 
     private GameObject lambInstance;
     private GameObject sheperdInstance;
@@ -34,9 +42,11 @@ public class Manager : MonoBehaviour
     public Queue<(Vector2 pos, float time)> MoveHistory { protected get { return _moveHistory; } set { _moveHistory = value; moveHistoryClone = new Queue<(Vector2 pos, float time)>(value); } }
     private Queue<(Vector2 pos, float time)> moveHistoryClone;
 
-    private (Vector2 pos, float time)[] queueElements;
+    private int level = 1;
 
-    [SerializeField] public int cloverGoal;
+
+
+
 
     private int _numOfClovers;
     public int numOfClovers { get { return _numOfClovers; }
@@ -52,11 +62,10 @@ public class Manager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //lambInstance = Instantiate(lambPlayerObject, lambSpawnPoint);
-        //lambInstance.GetComponent<LambController>().ManagerInstance = GetComponent<Manager>();
-        //Phase = LevelPhase.Sheep;
+        cloverGoal = cloverSpawnPoints.Count;
         SetPhase((int)LevelPhase.Sheep);
-
+        enemyInstances = new List<GameObject>();
+        enemiesToDestroy = new List<GameObject>();
         numOfClovers = 0;
     }
 
@@ -68,45 +77,84 @@ public class Manager : MonoBehaviour
 
     private void ClearInstances()
     {
+
         if (lambInstance)
         {
             Destroy(lambInstance);
-
-            Phase = LevelPhase.Ghost;
-            sheperdInstance = Instantiate(sheperdObject, sheperdSpawnPoint);
-            lambInstance = Instantiate(lambPassiveObject, lambSpawnPoint);
-            lambInstance.GetComponent<FollowMovement>().MoveHistory = MoveHistory;
-            //spawn ghosts
-            foreach (Transform child in wolfSpawnPoints)
-            {
-                Instantiate(wolfObject, child);
-            }
-            foreach (Transform child in snakeSpawnPoints)
-            {
-                Instantiate(snakeObject, child);
-            }
-            foreach (Transform child in foxSpawnPoints)
-            {
-                Instantiate(foxObject, child);
-            }
-            foreach (Transform child in cloverSpawnPoints)
-            {
-                Instantiate(clover, child);
-            }
         }
+        Destroy(sheperdInstance);
         if (sheperdInstance)
         {
-            Destroy(sheperdInstance);
+            
         }
         if (enemyInstances != null)
         {
-            foreach(GameObject enemy in enemyInstances)
+            enemiesToDestroy = new List<GameObject>();
+            foreach (GameObject enemy in enemyInstances)
             {
+                enemiesToDestroy.Add(enemy);
+                if (enemy)
+                {
+                    if (enemy.GetComponent<Spawner>())
+                    {
+                        enemy.GetComponent<Spawner>().Die();
+                    }
+                }
+                else
+                {
+                    enemyInstances.Remove(null);
+                }
+
+                
                 Destroy(enemy);
+            }
+            foreach (GameObject removeable in enemiesToDestroy)
+            {
+                enemyInstances.Remove(removeable);
             }
         }
     }
 
+    private int max(int a, int b)
+    {
+        return a > b ? a : b;
+    }
+
+
+    private int min(int a, int b)
+    {
+        return a < b ? a : b;
+    }
+
+    private void SpawnGhostPhaseActors()
+    {
+
+        sheperdInstance = Instantiate(sheperdObject, sheperdSpawnPoint);
+        
+
+        lambInstance = Instantiate(lambPassiveObject, lambSpawnPoint);
+        lambInstance.GetComponent<FollowMovement>().MoveHistory = MoveHistory;
+        lambInstance.GetComponent<FollowMovement>().ManagerReference = GetComponent<Manager>();
+
+
+        foreach (Transform loc in snakeSpawnPoints)
+        {
+            enemyInstances.Add(Instantiate(snakeObject, loc));
+        }
+        foreach (Transform loc in cloverSpawnPoints)
+        {
+            enemyInstances.Add(Instantiate(clover, loc));
+        }
+
+        foreach(Transform loc in wolfSpawnPoints)
+        {
+            enemyInstances.Add(Instantiate(wolfSpawnerObject, loc));
+        }
+        foreach (Transform loc in foxSpawnPoints)
+        {
+            enemyInstances.Add(Instantiate(foxSpawnerObject, loc));
+        }
+    }
 
     public void ToggleMenu(CanvasGroup group)
     {
@@ -120,44 +168,51 @@ public class Manager : MonoBehaviour
         ToggleMenu(gameOverMenu);
     }
 
+    public void Victory()
+    {
+        if (lambInstance)
+        {
+            Destroy(lambInstance);
+        }
+        ToggleMenu(victoryMenu);
+    }
+
     public void SetPhase(int newPhase)
     {
 
         switch ((LevelPhase)newPhase)
         {
-            case 0:
+            case LevelPhase.Sheep:
 
+                numOfClovers = 0;
                 ClearInstances();
-                Phase = LevelPhase.Sheep;
                 lambInstance = Instantiate(lambPlayerObject, lambSpawnPoint);
                 lambInstance.GetComponent<LambController>().ManagerInstance = GetComponent<Manager>();
 
-                foreach (Transform child in cloverSpawnPoints)
+                foreach (Transform loc in cloverSpawnPoints)
                 {
-                    Instantiate(clover, child);
+                    Instantiate(clover, loc);
                 }
 
                 break;
 
             case LevelPhase.Ghost:
+                if (lambInstance)
+                {
+                    lambInstance.GetComponent<LambController>().handleMoveHistory();
+                }
 
-                lambInstance.GetComponent<LambController>().handleMoveHistory();
                 ClearInstances();
+                SpawnGhostPhaseActors();
+                
+                
+                
                 
                 
                 if(moveHistoryClone != null)
                 {
                     MoveHistory = moveHistoryClone;
                 }
-
-                sheperdInstance = Instantiate(sheperdObject, sheperdSpawnPoint);
-
-                //Phase = LevelPhase.Ghost;
-                //sheperdInstance = Instantiate(sheperdObject, sheperdSpawnPoint);
-                //lambInstance = Instantiate(lambPassiveObject, lambSpawnPoint);
-                //lambInstance.GetComponent<FollowMovement>().MoveHistory = MoveHistory;
-
-                //spawn ghosts
                 break;
 
             case LevelPhase.LevelComplete:
