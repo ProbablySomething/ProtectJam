@@ -49,17 +49,20 @@ public class SitterAI : MonoBehaviour, iHealth
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.name == "Lamb(Clone)")
+        if(collision.gameObject.name == "LambPassive(Clone)")
         {
-            animator.SetBool("InRange", false);
+            Debug.Log("Stopping");
             StopCoroutine(readying);
+            animator.SetBool("InRange", false);
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.name == "Lamb(Clone)")
+        if (collision.gameObject.name == "LambPassive(Clone)")
         {
+            if(readying != null)
+                StopCoroutine(readying);
             Vector2 dir = (collision.transform.position - transform.position).normalized;
             animator.SetFloat("x", dir.x);
             animator.SetFloat("y", dir.y);
@@ -70,7 +73,7 @@ public class SitterAI : MonoBehaviour, iHealth
 
     void attack(GameObject target)
     {
-        if (target.name == "Lamb(Clone)")
+        if (target.tag == "lambPassive")
         {
             animator.SetTrigger("Attack");
             Vector2 dir = target.transform.position - transform.position;

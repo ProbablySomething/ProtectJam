@@ -479,36 +479,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &842172370
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 842172371}
-  m_Layer: 0
-  m_Name: foxSpawn
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &842172371
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 842172370}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.32, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2105145641}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &865206094
 GameObject:
   m_ObjectHideFlags: 0
@@ -630,7 +600,6 @@ Transform:
   m_Children:
   - {fileID: 932145852}
   - {fileID: 31048046}
-  - {fileID: 2105145641}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -663,22 +632,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 447f2a8ef78a03f4a87d97dc96f1b5dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lambSpawnPoint: {fileID: 887192271}
-  sheperdSpawnPoint: {fileID: 1672143063}
-  wolfSpawnPoints: {fileID: 31048046}
-  snakeSpawnPoints: {fileID: 932145852}
-  foxSpawnPoints: {fileID: 2105145641}
-  cloverSpawnPoints: {fileID: 574614324}
   sheperdObject: {fileID: 2692738363418850587, guid: fc9b114b868182d448ffdbee235d44c2, type: 3}
   lambPlayerObject: {fileID: 7663181477098189636, guid: 02a6d8a1f7508ad419f3c62a1dc3c83d, type: 3}
   lambPassiveObject: {fileID: 4920574500462711526, guid: c5a0bc32cae37c44d92ea8f181b81da8, type: 3}
-  wolfObject: {fileID: 4303096832010360739, guid: 3a6b707bcbaf5034385b50c5115700a2, type: 3}
+  wolfSpawnerObject: {fileID: 4303096832010360739, guid: 3a6b707bcbaf5034385b50c5115700a2, type: 3}
+  foxSpawnerObject: {fileID: 1679209772238709675, guid: aa39c678be1a4cf4fb42c7aa9ff619a9, type: 3}
   snakeObject: {fileID: 1848528751419647884, guid: 96ef393c7fd931f499c7f88c87a30a78, type: 3}
-  foxObject: {fileID: 1679209772238709675, guid: aa39c678be1a4cf4fb42c7aa9ff619a9, type: 3}
   clover: {fileID: 7124349086530397433, guid: 1e0946c4cf5be0a408bd80754c5dd43f, type: 3}
-  enemies: []
-  gameOverMenu: {fileID: 1211099358}
   cloverGoal: 3
+  lambSpawnPoint: {fileID: 887192271}
+  sheperdSpawnPoint: {fileID: 1672143063}
+  wolfSpawnPoints:
+  - {fileID: 322373761}
+  - {fileID: 1195022717}
+  snakeSpawnPoints:
+  - {fileID: 865206095}
+  - {fileID: 636909211}
+  foxSpawnPoints: []
+  cloverSpawnPoints:
+  - {fileID: 1621727053}
+  - {fileID: 1836115249}
+  - {fileID: 1993680243}
+  gameOverMenu: {fileID: 1211099358}
+  victoryMenu: {fileID: 0}
 --- !u!4 &958918442
 Transform:
   m_ObjectHideFlags: 0
@@ -1277,36 +1253,5 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 574614324}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2105145640
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2105145641}
-  m_Layer: 0
-  m_Name: foxSpawns
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2105145641
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2105145640}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 842172371}
-  m_Father: {fileID: 947433014}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
