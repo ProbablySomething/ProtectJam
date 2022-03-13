@@ -672,7 +672,7 @@ MonoBehaviour:
   sheperdObject: {fileID: 2692738363418850587, guid: fc9b114b868182d448ffdbee235d44c2, type: 3}
   lambPlayerObject: {fileID: 7663181477098189636, guid: 02a6d8a1f7508ad419f3c62a1dc3c83d, type: 3}
   lambPassiveObject: {fileID: 4920574500462711526, guid: c5a0bc32cae37c44d92ea8f181b81da8, type: 3}
-  wolfObject: {fileID: 1875940167188373082, guid: 3a6b707bcbaf5034385b50c5115700a2, type: 3}
+  wolfObject: {fileID: 4303096832010360739, guid: 3a6b707bcbaf5034385b50c5115700a2, type: 3}
   snakeObject: {fileID: 1848528751419647884, guid: 96ef393c7fd931f499c7f88c87a30a78, type: 3}
   foxObject: {fileID: 1679209772238709675, guid: aa39c678be1a4cf4fb42c7aa9ff619a9, type: 3}
   clover: {fileID: 7124349086530397433, guid: 1e0946c4cf5be0a408bd80754c5dd43f, type: 3}

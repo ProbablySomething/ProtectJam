@@ -12,6 +12,7 @@ public class FollowMovement : MonoBehaviour, iHealth
     private float t = 0;
     private int health;
 
+    private Animator animator;
     public int Health
     {
         get
@@ -36,6 +37,9 @@ public class FollowMovement : MonoBehaviour, iHealth
         currentMove = MoveHistory.Dequeue();
 
         Health = 1;
+
+        animator = GetComponentInChildren<Animator>();
+        animator.SetBool("Idle", true);
     }
 
     // Update is called once per frame
@@ -52,6 +56,16 @@ public class FollowMovement : MonoBehaviour, iHealth
                 if (MoveHistory.Count != 0)
                 {
                     currentMove = MoveHistory.Dequeue();
+                    if(currentMove.pos == Vector2.zero)
+                    {
+                        animator.SetBool("Idle", true);
+                    }
+                    else
+                    {
+                        animator.SetFloat("x", currentMove.pos.x);
+                        animator.SetFloat("y", currentMove.pos.y);
+                        animator.SetBool("Idle", false);
+                    }
                 }
                 else
                 {

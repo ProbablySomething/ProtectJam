@@ -10,6 +10,7 @@ public class FollowerAI : MonoBehaviour, iHealth
     [SerializeField] private float attackCooldown;
 
     GameObject target;
+    private Animator animator;
 
     bool awake = false;
     bool onCooldown = false;
@@ -40,6 +41,8 @@ public class FollowerAI : MonoBehaviour, iHealth
         movement = GetComponent<MovementController>();
         movement.Speed = speed;
 
+        animator = GetComponentInChildren<Animator>();
+
         Health = 1;
     }
 
@@ -49,6 +52,7 @@ public class FollowerAI : MonoBehaviour, iHealth
         {
             if (collision.gameObject.name == "LambPassive(Clone)")
             {
+                animator.SetBool("AggroRange", true);
                 awake = true;
                 target = collision.gameObject;
                 GetComponentInChildren<CircleCollider2D>().radius = attackRange;
@@ -58,6 +62,7 @@ public class FollowerAI : MonoBehaviour, iHealth
         {
             if(collision.gameObject.name == "LambPassive(Clone)")
             {
+                animator.SetBool("AttackRange", true);
                 attack(target);
             }
         }
@@ -68,8 +73,13 @@ public class FollowerAI : MonoBehaviour, iHealth
     {
         if(awake)
         {
-            if(target != null)
-                movement.HandleMovement((target.transform.position - transform.position).normalized);
+            if (target != null)
+            {
+                Vector2 dir = (target.transform.position - transform.position).normalized;
+                animator.SetFloat("x", dir.x);
+                animator.SetFloat("y", dir.y);
+                movement.HandleMovement(dir);
+            }
         }
     }
 
